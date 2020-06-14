@@ -11,19 +11,19 @@ body {
 }
 
 .navbar-brand {
-  color: #000 !important;
+  color: #00F !important;
 }
 
 .nav-link {
-  color: #000 !important;
+  color: #00F !important;
 }
 
 .table-dark {
-  color: #000;
+  color: #00F;
 }
 
 .list-group-item {
-  border-color: #000;
+  border-color: #00F;
   background-color: #fff;
 }
 
