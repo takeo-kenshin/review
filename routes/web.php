@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>'admin'],function(){
     Route::get('review/create','Admin\ReviewController@add')->middleware('auth'); 
+    Route::get('review/page','Admin\ReviewController@page')->name('page');
 });
 
 Auth::routes();

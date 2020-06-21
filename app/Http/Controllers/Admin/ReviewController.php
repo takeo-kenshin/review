@@ -7,8 +7,13 @@ use App\Http\Controllers\Controller;
 
 class ReviewController extends Controller
 {
-    //
+    
     public function add(){
         return view('admin.review.create');
+    }
+    public function page(){
+        
+        return view('admin.review.page');
+        
     }
 }

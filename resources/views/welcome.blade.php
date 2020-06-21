@@ -67,12 +67,18 @@
                 font-size:50px;
                 text-align: center;
                 font-weight: 600;
-                
+                padding:40px 0 10px 0;
             }
+            
+            .page-post{
+                padding:40px 0 40px 0;
+            }
+            
         </style>
     </head>
     <body>
         <div id="app">
+            
         <h1>レビューサイト</h1>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
@@ -93,20 +99,116 @@
                 目次
                 </div>
                 <p>
-                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">あ〜お</button>
-                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">か〜こ</button>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapse-kana" aria-expanded="false" aria-controls="collapse-kana">あ〜お</button>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapse-kana2" aria-expanded="false" aria-controls="collapse-kana2">か〜こ</button>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapse-kana3" aria-expanded="false" aria-controls="collapse-kana3">さ〜そ</button>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapse-kana4" aria-expanded="false" aria-controls="collapse-kana4">た〜と</button>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapse-kana5" aria-expanded="false" aria-controls="collapse-kana5">な〜の</button>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapse-kana6" aria-expanded="false" aria-controls="collapse-kana6">は〜ほ</button>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapse-kana7" aria-expanded="false" aria-controls="collapse-kana7">ま〜も</button>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapse-kana8" aria-expanded="false" aria-controls="collapse-kana8">や〜よ</button>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapse-kana9" aria-expanded="false" aria-controls="collapse-kana9">ら〜ろ</button>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapse-kana10" aria-expanded="false" aria-controls="collapse-kana10">わ</button>
                 </p>
-                <div class="collapse" id="collapseExample">
+                <div class="collapse" id="collapse-kana">
                     <div class="links">
-                    <a href="http://e26805fe45564a7bab3067f6253e1105.vfs.cloud9.us-east-2.amazonaws.com/login">あ</a>
-                    <a href="http://e26805fe45564a7bab3067f6253e1105.vfs.cloud9.us-east-2.amazonaws.com/login">い</a>
+                    <a href="#a">あ</a>
+                    <a href="#a">い</a>
+                    <a href="#a">う</a>
+                    <a href="#a">え</a>
+                    <a href="#a">お</a>
                     </div>
                 </div>
-                <div class="collapse" id="collapseExample2">
+                <div class="collapse" id="collapse-kana2">
                     <div class="links">
-                    <a href="https://laravel.com/docs">か</a>
+                    <a href="k">か</a>
+                    <a href="k">き</a>
+                    <a href="k">く</a>
+                    <a href="k">け</a>
+                    <a href="k">こ</a>
                     </div>
                 </div>
+                <div class="collapse" id="collapse-kana3">
+                    <div class="links">
+                    <a href="k">さ</a>
+                    <a href="k">し</a>
+                    <a href="k">す</a>
+                    <a href="k">せ</a>
+                    <a href="k">そ</a>
+                    </div>
+                </div>
+                <div class="collapse" id="collapse-kana4">
+                    <div class="links">
+                    <a href="k">た</a>
+                    <a href="k">ち</a>
+                    <a href="k">つ</a>
+                    <a href="k">て</a>
+                    <a href="k">と</a>
+                    </div>
+                </div>
+                <div class="collapse" id="collapse-kana5">
+                    <div class="links">
+                    <a href="k">な</a>
+                    <a href="k">に</a>
+                    <a href="k">ぬ</a>
+                    <a href="k">ね</a>
+                    <a href="k">の</a>
+                    </div>
+                </div>
+                <div class="collapse" id="collapse-kana6">
+                    <div class="links">
+                    <a href="k">は</a>
+                    <a href="k">ひ</a>
+                    <a href="k">ふ</a>
+                    <a href="k">へ</a>
+                    <a href="k">ほ</a>
+                    </div>
+                </div>
+                <div class="collapse" id="collapse-kana7">
+                    <div class="links">
+                    <a href="k">ま</a>
+                    <a href="k">み</a>
+                    <a href="k">む</a>
+                    <a href="k">め</a>
+                    <a href="k">も</a>
+                    </div>
+                </div>
+                <div class="collapse" id="collapse-kana8">
+                    <div class="links">
+                    <a href="k">や</a>
+                    <a href="k">ゆ</a>
+                    <a href="k">よ</a>
+                    </div>
+                </div>
+                <div class="collapse" id="collapse-kana9">
+                    <div class="links">
+                    <a href="k">ら</a>
+                    <a href="k">り</a>
+                    <a href="k">る</a>
+                    <a href="k">れ</a>
+                    <a href="k">ろ</a>
+                    </div>
+                </div>
+                <div class="collapse" id="collapse-kana10">
+                    <div class="links">
+                    <a href="k">わ</a>
+                    </div>
+                </div>
+                <div class="page-post">
+                    <button type="button" class="btn btn-warning btn-lg btn-block">
+                       <a href="{{ route('page') }}">作品投稿ページへ</a>
+                    </button> 
+                </div>
+                <table class ="table">
+                    <thead>
+                        <tr>
+                            <th>和音</th>
+                            <th>作品名</th>
+                            <th>平均評価点</th>
+                            <th>レビュー数</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
         </div>
