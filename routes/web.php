@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','Admin\ReviewController@product_index');
+
+
 
 Route::group(['prefix'=>'admin'],function(){
     Route::get('review/create','Admin\ReviewController@add')->middleware('auth'); 
     Route::get('review/page','Admin\ReviewController@page')->name('page');
     Route::post('review/page','Admin\ReviewController@product_page');
+    
 });
 
 Auth::routes();

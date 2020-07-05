@@ -94,6 +94,7 @@
                     @endauth
                 </div>
             @endif
+            
             <div class="content">
                 <div class="title m-b-md">
                 目次
@@ -194,20 +195,31 @@
                     <a href="k">わ</a>
                     </div>
                 </div>
+                
                 <div class="page-post">
                     <button type="button" class="btn btn-warning btn-lg btn-block">
                        <a href="{{ route('page') }}">作品投稿ページへ</a>
                     </button> 
                 </div>
-                <table class ="table">
+                
+                <table class ="table table-bordered table-dark">
                     <thead>
                         <tr>
-                            <th>和音</th>
-                            <th>作品名</th>
-                            <th>平均評価点</th>
-                            <th>レビュー数</th>
+                            <th width='10%'>ID</th>
+                            <th width='50%'>作品名</th>
+                            <th width='10%'>平均評価点</th>
+                            <th width='10%'>レビュー数</th>
+                            <th width='10%'>詳細</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        @foreach($posts as $product)
+                        <tr>
+                            <th>{{ $product->id }}</th>
+                            <td>{{ $product->title }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>

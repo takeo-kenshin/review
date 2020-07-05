@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    
     protected $guarded=array('id');
     
     public static $rules=array(

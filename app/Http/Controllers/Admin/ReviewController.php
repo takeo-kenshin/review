@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product;
 
 class ReviewController extends Controller
 {
@@ -36,5 +37,12 @@ class ReviewController extends Controller
         
         return redirect('admin/review/page');
         
+    }
+    
+    public function product_index(Request $request){
+        
+        $posts=Product::all();
+                        
+        return view('welcome',['posts'=>$posts]);
     }
 }
