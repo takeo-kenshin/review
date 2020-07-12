@@ -209,7 +209,7 @@
                             <th width='50%'>作品名</th>
                             <th width='10%'>平均評価点</th>
                             <th width='10%'>レビュー数</th>
-                            <th width='10%'>詳細</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -217,6 +217,7 @@
                         <tr>
                             <th>{{ $product->id }}</th>
                             <td>{{ $product->title }}</td>
+                            
                         </tr>
                         @endforeach
                     </tbody>

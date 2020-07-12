@@ -15,7 +15,7 @@ class AddUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('gender');
-            $table->integer('birthday');
+            $table->string('birthday');
         });
     }
 

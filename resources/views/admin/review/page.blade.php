@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title', '作品ページ新規投稿')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
