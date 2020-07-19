@@ -9,16 +9,7 @@ use App\Product;
 class ReviewController extends Controller
 {
     
-    public function add(){
-        
-        return view('admin.review.create');
-        
-    }
-    
-    public function create(Request $request){
-      
-      return redirect('admin/review/create');
-    } 
+     
     
     public function page(){
         
@@ -44,5 +35,37 @@ class ReviewController extends Controller
         $posts=Product::all();
                         
         return view('welcome',['posts'=>$posts]);
+    }
+    
+    public function product_main_page(Request $request){
+        
+        $product=Product::find($request->id);
+        if(empty($product)){
+            abort(404);
+        }
+        return view('admin.review.product_page',['product_form'=>$product]);
+    }
+    
+    public function add(Request $request){
+        
+        $product=Product::find($request->id);
+        if(empty($product)){
+            abort(404);
+        }
+        
+        return view('admin.review.create',['product_form'=>$product]);
+        
+    }
+    
+    public function create(Request $request){
+      
+      $this->validate($request,Comment::$rules);
+        $comment=new Comment;
+        $form=$request->all();
+        unset($form['_token']);
+        $comment->fill($form);
+        $comment->save();
+        
+      return redirect('admin/review/create');
     }
 }

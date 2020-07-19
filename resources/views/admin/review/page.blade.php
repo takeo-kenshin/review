@@ -1,9 +1,9 @@
 @extends('layouts.admin')
-@section('title', '作品ページ新規投稿')
+@section('title', '作品新規投稿')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 mx-auto">
             <div class="card">
                 <div class="card-header">作品新規投稿</div>
 
@@ -40,7 +40,7 @@
                         </div>
                         
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-4 offset-md-4">
                                 {{ csrf_field() }}
                                 <input type="submit" class="btn btn-primary" value="作成">
                                 <button type="submit" class="btn btn-warning"><a href="{{ url('/') }}">戻る</a></button>

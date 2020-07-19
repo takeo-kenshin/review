@@ -205,11 +205,11 @@
                 <table class ="table table-bordered table-dark">
                     <thead>
                         <tr>
-                            <th width='10%'>ID</th>
+                            <th width='5%'>ID</th>
                             <th width='50%'>作品名</th>
-                            <th width='10%'>平均評価点</th>
-                            <th width='10%'>レビュー数</th>
-                            
+                            <th width='15%'>平均評価点</th>
+                            <th width='15%'>レビュー数</th>
+                            <th width='15%'>詳細</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -217,9 +217,18 @@
                         <tr>
                             <th>{{ $product->id }}</th>
                             <td>{{ $product->title }}</td>
-                            
+                            <td>点数</td>
+                            <td>数</td>
+                            <td>
+                                <div>
+                                <button type="button" class="bth btn-warning">
+                                    <a href="{{ action('Admin\ReviewController@product_main_page',['id'=>$product->id]) }}">移動</a>
+                                </button>
+                                </div>
+                            </td>
                         </tr>
                         @endforeach
+                        
                     </tbody>
                 </table>
             </div>
