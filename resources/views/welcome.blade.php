@@ -222,13 +222,12 @@
                             <td>
                                 <div>
                                 <button type="button" class="bth btn-warning">
-                                    <a href="{{ action('Admin\ReviewController@product_main_page',['id'=>$product->id]) }}">移動</a>
+                                    <a href="{{ route('product.show',$product->id) }}">移動</a>
                                 </button>
                                 </div>
                             </td>
                         </tr>
                         @endforeach
-                        
                     </tbody>
                 </table>
             </div>

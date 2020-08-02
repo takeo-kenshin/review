@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Comment;
+use App\User;
 
 class ReviewController extends Controller
 {
-    
-     
-    
+
     public function page(){
         
         return view('admin.review.page');
@@ -37,27 +37,21 @@ class ReviewController extends Controller
         return view('welcome',['posts'=>$posts]);
     }
     
-    public function product_main_page(Request $request){
+    public function product_main_page($id){
         
-        $product=Product::find($request->id);
-        if(empty($product)){
-            abort(404);
-        }
-        return view('admin.review.product_page',['product_form'=>$product]);
-    }
-    
-    public function add(Request $request){
-        
-        $product=Product::find($request->id);
-        if(empty($product)){
-            abort(404);
-        }
-        
-        return view('admin.review.create',['product_form'=>$product]);
+        return view('admin.review.product_page',['product'=>Product::findOrFail($id)]);
         
     }
     
-    public function create(Request $request){
+    public function comment(Request $request,$id){
+        
+        $users=User::all();
+        
+        return view('admin.review.create',['product'=>Product::findOrFail($id),'users'=>$users]);
+        
+    }
+    
+    public function comment_create(Request $request,$id){
       
       $this->validate($request,Comment::$rules);
         $comment=new Comment;
@@ -66,6 +60,13 @@ class ReviewController extends Controller
         $comment->fill($form);
         $comment->save();
         
-      return redirect('admin/review/create');
+      return redirect('admin/review/create',['product'=>Product::findOrFail($id)]);
+    }
+    
+    public function comment_index(Request $request,$id){
+        
+        $comments=Comment::all();
+                        
+        return view('admin.review.product_page',['product'=>Product::findOrFail($id),'comments'=>$comments]);
     }
 }

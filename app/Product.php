@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Comment;
 class Product extends Model
 {
     
@@ -13,4 +13,9 @@ class Product extends Model
         'title'=>'required',
         'body'=>'required',
         );
+        
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    } 
 }

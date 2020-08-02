@@ -8,7 +8,7 @@
                 <div class="card-header">コメント新規投稿</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ action('Admin\ReviewController@create') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('comment.create',$product->id) }}" enctype="multipart/form-data">
                         @csrf
 
                         @if (count($errors) > 0)
@@ -18,15 +18,22 @@
                             @endforeach
                         </ul>
                         @endif
-                        <div class="form-group row">
-                            <label for="title" class="col-md-2 col-form-label text-md-right">作品名</label>
-                            <div class="col-md-8">
-                                <p>{{ $product_form->title }}</p>
+
+                            <div class="form-group row">
+                                <label for="product_id" class="col-md-2 text-md-right">Product ID</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="product_id" placeholder="{{ $product->id }}">
+                                </div>
                             </div>
-                        </div>
-                        
+                            <div class="form-group row">
+                                <label for="user_id" class="col-md-2 text-md-right">User ID</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="user_id" placeholder="{{ $user->id }}">
+                                </div>
+                            </div>
+                     
                         <div class="form-group row">
-                            <label for="score" class="col-md-2 col-form-label text-md-right">評価</label>
+                            <label for="score" class="col-md-2 text-md-right">評価</label>
                             <div class="col-md-6">
                                 <input id="score-five" name="score" type="radio" value="five">
                                     <label for="score-five">5</label>
@@ -50,10 +57,10 @@
                         <div class="form-group row">
                             <label class="col-md-2 text-md-right" >コメント</label>
                                 <div class="col-md-10">
-                                    <textarea class="form-control" name="comment" rows="20">{{ old('comment') }}</textarea>
+                                    <textarea class="form-control" name="body" rows="20">{{ old('body') }}</textarea>
                                 </div>
                                 
-                                @error('comment')
+                                @error('body')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -64,10 +71,9 @@
                             <div class="col-md-4 offset-md-4">
                                 {{ csrf_field() }}
                                 <input type="submit" class="btn btn-primary" value="投稿">
-                                <button type="submit" class="btn btn-warning"><a href="{{ url('/') }}">戻る</a></button>
+                                <button type="submit" class="btn btn-warning"><a href="{{ route('product.show',$product->id) }}">戻る</a></button>
                             </div>
                         </div>
-                        
                     </form>
                 </div>
             </div>
