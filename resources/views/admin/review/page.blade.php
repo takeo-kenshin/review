@@ -19,11 +19,23 @@
                         </ul>
                         @endif
                         <div class="form-group row">
+                            <label for="syllabary" class="col-md-2 col-form-label text-md-right">五十音</label>
+                            <div class="col-md-8">
+                                <input id="syllabary" type="text" class="form-control @error('syllabary') is-invalid @enderror" name="syllabary" >
+                                <span id="help8" class="form-text text-muted">
+                                    例‥あ=11 い=12 う=13 え=14 お=15 か=21 き=22 く=23 け=24 こ=25 
+                                </span>
+                                @error('syllabary')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="title" class="col-md-2 col-form-label text-md-right">作品名</label>
-
                             <div class="col-md-8">
                                 <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
-
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

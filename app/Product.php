@@ -12,10 +12,16 @@ class Product extends Model
     public static $rules=array(
         'title'=>'required',
         'body'=>'required',
+        'syllabary'=>'required',
         );
         
     public function comments()
     {
         return $this->hasMany('App\Comment');
+    } 
+    
+    public function users()
+    {
+        return $this->hasMany('App\User');
     } 
 }

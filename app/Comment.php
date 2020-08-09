@@ -15,13 +15,13 @@ class Comment extends Model
         'body'=>'required',
         );
     
-    public function products()
-    {
-        return $this->hasMany('App\Product');
-    } 
-    
     public function users()
     {
         return $this->hasMany('App\User');
     } 
+    
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }

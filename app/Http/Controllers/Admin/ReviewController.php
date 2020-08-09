@@ -60,13 +60,20 @@ class ReviewController extends Controller
         $comment->fill($form);
         $comment->save();
         
-      return redirect('admin/review/create',['product'=>Product::findOrFail($id)]);
+      return redirect('admin/review/product_page/{id}/create',['product'=>Product::findOrFail($id)]);
     }
     
     public function comment_index(Request $request,$id){
         
         $comments=Comment::all();
-                        
+        $comments= \App\Comment::latest()->get();                
         return view('admin.review.product_page',['product'=>Product::findOrFail($id),'comments'=>$comments]);
+    }
+    
+    public function comment_delete(Request $request,$id){
+        
+        $comment=Comment::find($request->id);
+        
+        return redirect('admin/review/product_page/{id}',['product'=>Product::findOrFail($id)]);
     }
 }

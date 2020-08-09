@@ -22,37 +22,22 @@
                             <div class="form-group row">
                                 <label for="product_id" class="col-md-2 text-md-right">Product ID</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" id="product_id" placeholder="{{ $product->id }}">
+                                    <input type="text" class="form-control" id="product_id" name="product_id" value="{{ $product->id }}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="user_id" class="col-md-2 text-md-right">User ID</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" id="user_id" placeholder="{{ $user->id }}">
+                                    <input type="text" class="form-control" id="user_id" name="user_id" value="{{ $id = Auth::id() }}" readonly>
                                 </div>
                             </div>
                      
-                        <div class="form-group row">
-                            <label for="score" class="col-md-2 text-md-right">評価</label>
-                            <div class="col-md-6">
-                                <input id="score-five" name="score" type="radio" value="five">
-                                    <label for="score-five">5</label>
-                                <input id="score-four" name="score" type="radio" value="four">
-                                    <label for="score-four">4</label>    
-                                <input id="score-three" name="score" type="radio" value="three">
-                                    <label for="score-three">3</label> 
-                                <input id="score-two" name="score" type="radio" value="two">
-                                    <label for="score-two">2</label> 
-                                <input id="score-one" name="score" type="radio" value="one">
-                                    <label for="score-one">1</label>
-                                    
-                                @error('score')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group row">
+                                <label for="score" class="col-md-2 text-md-right">点数</label>
+                                <div class="col-md-6">
+                                    <input type="number" class="form-control" id="score" name="score" min='0' max='5'>
+                                </div>
                             </div>
-                        </div>
                         
                         <div class="form-group row">
                             <label class="col-md-2 text-md-right" >コメント</label>

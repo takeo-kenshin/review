@@ -18,7 +18,6 @@
                         @endif
                     <div class="form-group row">
                         <label for="title" class="col-md-2 col-form-label text-md-right">作品名</label>
-
                         <div class="col-md-8">
                             <p>{{ $product->title }}</p>
                         </div>
@@ -30,14 +29,21 @@
                             <p>{{ $product->body }}</p>
                         </div>
                     </div>
-                        
+                      
                     <div class="form-group row">
-                        <label for = "ave" class="col-md-4 col-form-label text-md-right">平均評価点</label>
-                            
-                            
-                        <label for = "sum" class="col-md-4 col-form-label text-md-right">合計レビュー</label>
-                            
-                             
+                        <label for = "ave" class="col-md-2 col-form-label text-md-right">平均評価点</label>
+                        <div class="col-md-8">
+                            <p>{{ $avg_score = \App\Comment::avg('score') }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label for = "sum" class="col-md-2 col-form-label text-md-right">合計レビュー</label>
+                        <div class="col-md-8">
+                            <p>{{ $count = \App\Comment::count('id') }}</p>
+                        </div>
+                    </div>
+                    
                         <button type ="button" class="btn btn-warning">
                             <a href="{{ route('comment.show',$product->id) }}">コメント</a>
                         </button>
@@ -46,25 +52,22 @@
                     <table class ="table table-bordered">
                         <thead>
                         <tr>
-                            <th width='5%'>ID</th>
-                            <th width='10%'>User</th>
-                            <th width='10%'>点数</th>
-                            <th width='75%'>Comment</th>
+                            <th width='10%'>Comment_ID</th>
+                            <th width='10%'>User_ID</th>
+                            <th width='10%'>評価点</th>
+                            <th width='60%'>Comment</th>
+                            <th width='10%'>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($comments as $comment)
                         <tr>
                             <th>{{ $comment->id }}</th>
-                            <td></td>
+                            <td>{{ $comment->user_id }}</td>
                             <td>{{ $comment->score }}</td>
                             <td>{{ $comment->body }}</td>
                             <td>
-                                <div>
-                                <button type="button" class="bth btn-warning">
-                                    <a href="{{ url('/') }}">移動</a>
-                                </button>
-                                </div>
+                                <a href="{{ route('comment.delete',$product->id) }}">削除</a>
                             </td>
                         </tr>
                         @endforeach
