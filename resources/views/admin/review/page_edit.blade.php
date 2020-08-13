@@ -1,14 +1,14 @@
 @extends('layouts.admin')
-@section('title', '作品新規投稿')
+@section('title', '作品情報編集')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 mx-auto">
             <div class="card">
-                <div class="card-header">作品新規投稿</div>
+                <div class="card-header">作品情報編集</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ action('Admin\ReviewController@product_page') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('page.update',$product->id) }}" enctype="multipart/form-data">
                         @csrf
 
                         @if (count($errors) > 0)
@@ -21,7 +21,7 @@
                         <div class="form-group row">
                             <label for="syllabary" class="col-md-2 col-form-label text-md-right">五十音</label>
                             <div class="col-md-8">
-                                <input id="syllabary" type="text" class="form-control @error('syllabary') is-invalid @enderror" name="syllabary" >
+                                <input id="syllabary" type="text" class="form-control @error('syllabary') is-invalid @enderror" name="syllabary" value="{{ $product->syllabary }}">
                                 <span id="help8" class="form-text text-muted">
                                     例‥あ=11 い=12 う=13 え=14 お=15 か=21 き=22 く=23 け=24 こ=25 
                                 </span>
@@ -35,7 +35,7 @@
                         <div class="form-group row">
                             <label for="title" class="col-md-2 col-form-label text-md-right">作品名</label>
                             <div class="col-md-8">
-                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
+                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $product->title }}" required autocomplete="title" autofocus>
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -47,18 +47,17 @@
                         <div class="form-group row">
                             <label class="col-md-2 text-md-right" >基本情報</label>
                                 <div class="col-md-10">
-                                    <textarea class="form-control" name="body" rows="20">{{ old('body') }}</textarea>
+                                    <textarea class="form-control" name="body" rows="20">{{ $product->body }}</textarea>
                                 </div>
                         </div>
                         
                         <div class="form-group row mb-0">
                             <div class="col-md-4 offset-md-4">
-                                {{ csrf_field() }}
-                                <input type="submit" class="btn btn-primary" value="作成">
-                                <button type="submit" class="btn btn-warning"><a href="{{ route('index') }}">戻る</a></button>
+                            {{ csrf_field() }}
+                            <input type="submit" class="btn btn-primary" value="更新">
+                            <button type="submit" class="btn btn-warning"><a href="{{ url('/') }}">戻る</a></button>
                             </div>
                         </div>
-                        
                     </form>
                 </div>
             </div>

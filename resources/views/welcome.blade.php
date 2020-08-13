@@ -131,7 +131,7 @@
                 </div>
                 <div class="collapse" id="collapse-kana3">
                     <div class="links">
-                    <a href="k">さ</a>
+                    <a href="#">さ</a>
                     <a href="k">し</a>
                     <a href="k">す</a>
                     <a href="k">せ</a>
@@ -206,25 +206,41 @@
                     <thead>
                         <tr>
                             <th width='5%'>ID</th>
+                            <th width='5%'>五十音</th>
                             <th width='50%'>作品名</th>
-                            <th width='15%'>平均評価点</th>
-                            <th width='15%'>レビュー数</th>
-                            <th width='15%'>詳細</th>
+                            <th width='10%'>平均評価点（点）</th>
+                            <th width='10%'>レビュー数（件）</th>
+                            <th width='10%'>詳細</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($posts as $product)
                         <tr>
                             <th>{{ $product->id }}</th>
+                            <th>{{ $product->syllabary }}</th>
                             <td>{{ $product->title }}</td>
-                            <td>点数</td>
-                            <td>数</td>
+                            <td>{{ $avg_score = \App\Comment::avg('score') }}</td>
+                            <td>{{ $count = \App\Comment::count('id') }}</td>
                             <td>
                                 <div>
                                 <button type="button" class="bth btn-warning">
                                     <a href="{{ route('product.show',$product->id) }}">移動</a>
                                 </button>
                                 </div>
+                            </td>
+                            <td>
+                            <div>
+                            <button type="button" class="bth btn-warning">
+                            <a href="{{ route('page.edit',$product->id) }}">編集</a>
+                            </button>
+                            </div>
+                            </td>
+                            <td>
+                            <div>
+                            <button type="button" class="bth btn-warning">
+                            <a href="{{ route('product.delete',$product->id) }}">削除</a>
+                            </button>
+                            </div>
                             </td>
                         </tr>
                         @endforeach

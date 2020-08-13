@@ -53,21 +53,23 @@
                         <thead>
                         <tr>
                             <th width='10%'>Comment_ID</th>
+                            <th width='5%'>Product_ID</th>
                             <th width='10%'>User_ID</th>
                             <th width='10%'>評価点</th>
                             <th width='60%'>Comment</th>
-                            <th width='10%'>操作</th>
+                            <th width='5%'>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($comments as $comment)
                         <tr>
                             <th>{{ $comment->id }}</th>
+                            <th>{{ $comment->product_id }}</th>
                             <td>{{ $comment->user_id }}</td>
                             <td>{{ $comment->score }}</td>
                             <td>{{ $comment->body }}</td>
                             <td>
-                                <a href="{{ route('comment.delete',$product->id) }}">削除</a>
+                                <a href="{{ route('comment.delete',[$product->id,$comment->id]) }}">削除</a>
                             </td>
                         </tr>
                         @endforeach
