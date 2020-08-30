@@ -21,30 +21,13 @@
                 margin: 0;
             }
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
             .top-right {
                 position: absolute;
                 right: 10px;
                 top: 18px;
             }
 
-            .content {
-                text-align: center;
-            }
-
+            
             .title {
                 font-size:30px;
             }
@@ -59,33 +42,27 @@
                 text-transform: uppercase;
             }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-            
             h1{
-                font-size:50px;
+                font-size:40px;
                 text-align: center;
                 font-weight: 600;
-                padding:40px 0 10px 0;
-            }
-            
-            .page-post{
-                padding:40px 0 40px 0;
+                padding:60px 0 10px 0;
             }
             
         </style>
     </head>
-    <body>
-        <div id="app">
-            
+<body>
+    <div class="container">
+        <div class="row">
         <h1>レビューサイト</h1>
-        <div class="flex-center position-ref full-height">
+        </div>
+        
+        <div class="row">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">ユーザー情報</a>
-                        <a href="{{ route('index') }}">投稿</a>
+                        <a href="{{ route('index') }}">投稿用ページ</a>
                     @else
                         <a href="{{ route('login') }}">ログイン</a>
 
@@ -95,8 +72,9 @@
                     @endauth
                 </div>
             @endif
-            
-            <div class="content">
+        </div>
+        
+            <div class="row">
                 <div class="col-md-10">
                     <form method="GET" action="{{ action('ViewController@product_index') }}" enctype="multipart/form-data">
                     <div class="form-group row">
@@ -110,26 +88,32 @@
                         </div>
                     </div>
                 </div>
-                
+            </div> 
+            
+            <div class="row">
+                <div class="list col-md-12 mx-auto">
+                <div class="row">
                 <table class ="table table-bordered table-Active">
                     <thead>
                         <tr>
-                            <th width='50%'>作品名</th>
-                            <th width='20%'>平均評価点（点）</th>
+                            <th width='5%'>ID</th>
+                            <th width='55%'>作品名</th>
+                            <th width='15%'>平均評価点（点）</th>
                             <th width='15%'>レビュー数（件）</th>
-                            <th width='15%'>詳細</th>
+                            <th width='10%'>操作</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($products as $product)
                         <tr>
+                            <th>{{ $product->id }}</th>
                             <td>{{ $product->title }}</td>
                             <td>{{ $product->comments()->avg('score') }}</td>
                             <td>{{ $product->comments()->count() }}</td>
                             <td>
                                 <div>
-                                <button type="button" class="bth btn-warning">
-                                    <a href="{{ route('product.readonly',$product->id) }}">移動</a>
+                                <button type="button" class="bth btn-warning ml-3">
+                                    <a href="{{ route('product.readonly',$product->id) }}">詳細</a>
                                 </button>
                                 </div>
                             </td>
@@ -137,10 +121,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                
-                
+                </div>
+                </div>
             </div>
-        </div>
-        </div>
-    </body>
+    </div>
+</body>
 </html>

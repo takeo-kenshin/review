@@ -21,30 +21,13 @@
                 margin: 0;
             }
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
             .top-right {
                 position: absolute;
                 right: 10px;
                 top: 18px;
             }
 
-            .content {
-                text-align: center;
-            }
-
+            
             .title {
                 font-size:30px;
             }
@@ -59,34 +42,28 @@
                 text-transform: uppercase;
             }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-            
             h1{
-                font-size:50px;
+                font-size:40px;
                 text-align: center;
                 font-weight: 600;
-                padding:40px 0 10px 0;
-            }
-            
-            .page-post{
-                padding:40px 0 40px 0;
-                text-align: left;
+                padding:60px 0 10px 0;
             }
             
         </style>
+        
     </head>
     <body>
-        <div id="app">
-            
+    <div class="container">
+        <div class="row">
         <h1>レビューサイト</h1>
-        <div class="flex-center position-ref full-height">
+        </div>
+        <div class="row">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="top-right links ">
                     @auth
+                        <a href="{{ route('page') }}">作品投稿</a>
                         <a href="{{ url('/home') }}">ユーザー情報</a>
-                        <a href="{{ url('/') }}">閲覧</a>
+                        <a href="{{ url('/') }}">閲覧用ページ</a>
                     @else
                         <a href="{{ route('login') }}">ログイン</a>
 
@@ -96,9 +73,9 @@
                     @endauth
                 </div>
             @endif
-            
-            <div class="content">
-                <div class="col-md-10">
+        </div>   
+            <div class="row">
+                <div class="col-md-8">
                     <form method="GET" action="{{ action('Admin\ReviewController@product_index') }}" enctype="multipart/form-data">
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label text-md-right">タイトル</label>
@@ -111,13 +88,11 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="page-post">
-                    <button type="button" class="btn btn-warning btn-lg">
-                       <a href="{{ route('page') }}">作品投稿ページへ</a>
-                    </button> 
-                </div>
-                
+            </div>    
+          
+        <div class="row">
+            <div class="list col-md-12 mx-auto">
+                <div class="row">
                 <table class ="table table-bordered table-Active">
                     <thead>
                         <tr>
@@ -137,11 +112,11 @@
                             <td>{{ $product->comments()->count() }}</td>
                             <td>
                                 <div>
-                                <button type="button" class="bth btn-warning">
+                                <button type="button" class="bth btn-warning mr-4">
                                     <a href="{{ route('product.show',$product->id) }}">詳細</a>
                                 </button>
                                 
-                                <button type="button" class="bth btn-warning">
+                                <button type="button" class="bth btn-warning mr-4">
                                     <a href="{{ route('page.edit',$product->id) }}">編集</a>
                                 </button>
                                 
@@ -154,10 +129,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                
-                
+                </div>
             </div>
-        </div>
-        </div>
+        </div>   
+    </div>
     </body>
 </html>

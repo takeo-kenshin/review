@@ -51,10 +51,10 @@
                                 </div>
                         </div>
                         
-                        <div class="form-group row mb-0">
-                            <div class="col-md-4 offset-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-8 offset-md-2">
                                 {{ csrf_field() }}
-                                <input type="submit" class="btn btn-primary" value="作成">
+                                <input type="submit" class="btn btn-warning mr-3" value="作成">
                                 <button type="submit" class="btn btn-warning"><a href="{{ route('index') }}">戻る</a></button>
                             </div>
                         </div>

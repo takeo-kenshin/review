@@ -52,10 +52,10 @@
                     </div>
                     
                     <div class='button'>
-                        <button type ="button" class="btn btn-warning">
+                        <button type ="button" class="btn btn-warning mb-3 mr-3">
                             <a href="{{ route('comment.show',$product->id) }}">コメント</a>
                         </button>
-                        <button type ="button" class="btn btn-warning">
+                        <button type ="button" class="btn btn-warning mb-3">
                             <a href="{{ route('index') }}">戻る</a>
                         </button>
                     </div>
@@ -64,18 +64,18 @@
                         <thead>
                         <tr>
                             <th width='10%'>Comment_ID</th>
-                            <th width='5%'>Product_ID</th>
+                            
                             <th width='10%'>User_ID</th>
                             <th width='10%'>評価点</th>
                             <th width='60%'>Comment</th>
-                            <th width='5%'>操作</th>
+                            <th width='10%'>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($comments as $comment)
                         <tr>
                             <th>{{ $comment->id }}</th>
-                            <th>{{ $comment->product_id }}</th>
+                            
                             <td>{{ $comment->user_id }}</td>
                             <td>{{ $comment->score }}</td>
                             <td>{{ $comment->body }}</td>
