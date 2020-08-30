@@ -10,15 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/','Admin\ReviewController@product_index')->name('index');
+Route::get('/index','Admin\ReviewController@product_index')->name('index');
 
 Route::group(['prefix'=>'admin'],function(){
     
-    Route::get('review/page','Admin\ReviewController@page')->name('page');
+    Route::get('review/page','Admin\ReviewController@page')->name('page')->middleware('auth');
     Route::post('review/page','Admin\ReviewController@product_page');
     
-    Route::get('review/page/{id}/edit','Admin\ReviewController@product_edit')->name('page.edit');
+    Route::get('review/page/{id}/edit','Admin\ReviewController@product_edit')->name('page.edit')->middleware('auth');
     Route::post('review/page/{id}/edit','Admin\ReviewController@product_update')->name('page.update');
     Route::get('review/page/{id}/delete','Admin\ReviewController@product_delete')->name('product.delete')->middleware('auth');
     
@@ -34,4 +35,5 @@ Route::group(['prefix'=>'admin'],function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'ViewController@product_index');
+Route::get('/product_page/{id}', 'ViewController@comment_index')->name('product.readonly');

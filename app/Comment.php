@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Product;
+use App\User;
 
 class Comment extends Model
 {
@@ -20,8 +22,8 @@ class Comment extends Model
         return $this->hasMany('App\User');
     } 
     
-    public function comments()
+    public function products()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\Product');
     }
 }

@@ -72,7 +72,6 @@
             
             .page-post{
                 padding:40px 0 40px 0;
-                text-align: left;
             }
             
         </style>
@@ -86,7 +85,7 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">ユーザー情報</a>
-                        <a href="{{ url('/') }}">閲覧</a>
+                        <a href="{{ route('index') }}">投稿</a>
                     @else
                         <a href="{{ route('login') }}">ログイン</a>
 
@@ -99,7 +98,7 @@
             
             <div class="content">
                 <div class="col-md-10">
-                    <form method="GET" action="{{ action('Admin\ReviewController@product_index') }}" enctype="multipart/form-data">
+                    <form method="GET" action="{{ action('ViewController@product_index') }}" enctype="multipart/form-data">
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label text-md-right">タイトル</label>
                         <div class="col-md-8">
@@ -112,41 +111,25 @@
                     </div>
                 </div>
                 
-                <div class="page-post">
-                    <button type="button" class="btn btn-warning btn-lg">
-                       <a href="{{ route('page') }}">作品投稿ページへ</a>
-                    </button> 
-                </div>
-                
                 <table class ="table table-bordered table-Active">
                     <thead>
                         <tr>
-                            <th width='5%'>ID</th>
                             <th width='50%'>作品名</th>
-                            <th width='10%'>平均評価点（点）</th>
-                            <th width='10%'>レビュー数（件）</th>
-                            <th width='25%'>操作</th>
+                            <th width='20%'>平均評価点（点）</th>
+                            <th width='15%'>レビュー数（件）</th>
+                            <th width='15%'>詳細</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($products as $product)
                         <tr>
-                            <th>{{ $product->id }}</th>
                             <td>{{ $product->title }}</td>
                             <td>{{ $product->comments()->avg('score') }}</td>
                             <td>{{ $product->comments()->count() }}</td>
                             <td>
                                 <div>
                                 <button type="button" class="bth btn-warning">
-                                    <a href="{{ route('product.show',$product->id) }}">詳細</a>
-                                </button>
-                                
-                                <button type="button" class="bth btn-warning">
-                                    <a href="{{ route('page.edit',$product->id) }}">編集</a>
-                                </button>
-                                
-                                <button type="button" class="bth btn-warning">
-                                    <a href="{{ route('product.delete',$product->id) }}">削除</a>
+                                    <a href="{{ route('product.readonly',$product->id) }}">移動</a>
                                 </button>
                                 </div>
                             </td>

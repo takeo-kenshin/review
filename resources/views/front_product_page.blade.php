@@ -2,12 +2,6 @@
 @section('title', '作品情報ページ')
 @section('content')
 
-<style>
-    .button {
-                margin-bottom: 20px;
-            }
-</style>
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -31,7 +25,7 @@
                     </div>
                         
                     <div class="form-group row">
-                        <label class="col-md-2 text-md-right" >基本情報</label>
+                        <label class="col-md-2 text-md-right" >あらすじ</label>
                         <div class="col-md-10">
                             <p>{{ $product->body }}</p>
                         </div>
@@ -50,40 +44,21 @@
                            <p>{{ $count }}</p>
                         </div>
                     </div>
-                    
-                    <div class='button'>
-                        <button type ="button" class="btn btn-warning">
-                            <a href="{{ route('comment.show',$product->id) }}">コメント</a>
-                        </button>
-                        <button type ="button" class="btn btn-warning">
-                            <a href="{{ route('index') }}">戻る</a>
-                        </button>
-                    </div>
                         
                     <table class ="table table-bordered">
                         <thead>
                         <tr>
-                            <th width='10%'>Comment_ID</th>
-                            <th width='5%'>Product_ID</th>
                             <th width='10%'>User_ID</th>
-                            <th width='10%'>評価点</th>
-                            <th width='60%'>Comment</th>
-                            <th width='5%'>操作</th>
+                            <th width='20%'>評価点</th>
+                            <th width='70%'>Comment</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($comments as $comment)
                         <tr>
-                            <th>{{ $comment->id }}</th>
-                            <th>{{ $comment->product_id }}</th>
                             <td>{{ $comment->user_id }}</td>
                             <td>{{ $comment->score }}</td>
                             <td>{{ $comment->body }}</td>
-                            <td>
-                                <button type ="button" class="btn btn-warning">
-                                <a href="{{ route('comment.delete',[$product->id,$comment->id]) }}">削除</a>
-                                </button>
-                            </td>
                         </tr>
                         @endforeach
                         </tbody>

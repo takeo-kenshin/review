@@ -8,6 +8,8 @@ use App\Product;
 use App\Comment;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 class ReviewController extends Controller
 {
 
@@ -26,15 +28,21 @@ class ReviewController extends Controller
         $product->fill($form);
         $product->save();
         
-        return redirect('/');
+        return redirect('/index');
         
     }
     
     public function product_index(Request $request){
         
-        $posts=Product::all();
-                        
-        return view('welcome',['posts'=>$posts]);
+        $cond_title = $request->cond_title;
+      if ($cond_title != '') {
+          $products = Product::where('title', 'like','%'.$cond_title.'%')->get();
+      } else {
+          $products = Product::all()->sortBy('syllabary');
+      }
+        $products=Product::all()->sortBy('syllabary');
+        
+        return view('welcome',['products'=>$products,'cond_title' => $cond_title]);
     }
     
     
@@ -64,6 +72,7 @@ class ReviewController extends Controller
         return redirect()->route('index');
     }
     
+    
     public function comment(Request $request,$id){
         
         $users=User::all();
@@ -87,8 +96,10 @@ class ReviewController extends Controller
     public function comment_index(Request $request,$id){
         
         $comments=DB::table('comments')->where('product_id','=',$id)->get();
+        $average=DB::table('comments')->where('product_id','=',$id)->avg('score');
+        $count=DB::table('comments')->where('product_id','=',$id)->count('id');
         
-        return view('admin.review.product_page',['product'=>Product::findOrFail($id),'comments'=>$comments]);
+        return view('admin.review.product_page',['product'=>Product::findOrFail($id),'comments'=>$comments,'average'=>$average,'count'=>$count]);
     }
     
     public function comment_delete(Request $request,$id,$post){
