@@ -40,7 +40,6 @@ class ReviewController extends Controller
       } else {
           $products = Product::all()->sortBy('syllabary');
       }
-        $products=Product::all()->sortBy('syllabary');
         
         return view('welcome',['products'=>$products,'cond_title' => $cond_title]);
     }
