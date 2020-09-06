@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="{{ secure_asset('js/app.js') }}" defer></script>
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
-        <title>レビューサイト</title>
+        <title>映画レビューサイト</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -55,7 +55,7 @@
     <body>
     <div class="container">
         <div class="row">
-        <h1>レビューサイト</h1>
+        <h1>映画レビューサイト</h1>
         </div>
         <div class="row">
             @if (Route::has('login'))
@@ -120,9 +120,30 @@
                                     <a href="{{ route('page.edit',$product->id) }}">編集</a>
                                 </button>
                                 
-                                <button type="button" class="bth btn-warning">
-                                    <a href="{{ route('product.delete',$product->id) }}">削除</a>
+                                <button type="button" class="bth btn-warning" data-toggle="modal" data-target="#modal1">
+                                削除
                                 </button>
+                                <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="label1">確認</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        削除しますか？
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">いいえ</button>
+                                        <button type="submit" class="btn btn-warning">
+                                            <a href="{{ route('product.delete',$product->id) }}">はい</a>
+                                        </button>
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
                                 </div>
                             </td>
                         </tr>

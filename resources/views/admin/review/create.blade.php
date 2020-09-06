@@ -53,12 +53,13 @@
                         </div>
                         
                         <div class="form-group row">
-                            <div class="col-md-4 offset-md-4">
+                            <div class="col-md-8 offset-md-2">
                                 {{ csrf_field() }}
-                                <input type="submit" class="btn btn-primary" value="投稿">
+                                <input type="submit" class="btn btn-warning mr-3" value="投稿">
                                 <button type="submit" class="btn btn-warning"><a href="{{ route('product.show',$product->id) }}">戻る</a></button>
                             </div>
                         </div>
+                        
                     </form>
                 </div>
             </div>

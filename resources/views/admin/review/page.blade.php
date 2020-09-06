@@ -32,6 +32,7 @@
                                 @enderror
                             </div>
                         </div>
+                        
                         <div class="form-group row">
                             <label for="title" class="col-md-2 col-form-label text-md-right">作品名</label>
                             <div class="col-md-8">

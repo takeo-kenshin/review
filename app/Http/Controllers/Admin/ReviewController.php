@@ -61,7 +61,8 @@ class ReviewController extends Controller
         $product->fill($form);
         $product->save();
         
-        return redirect('admin/review/{id}/page',['product'=>Product::findOrFail($id)]);
+        return redirect()->route('index',['id'=>$id]);
+        
     }
     
     public function product_delete(Request $request,$id){

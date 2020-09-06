@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="{{ secure_asset('js/app.js') }}" defer></script>
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
-        <title>レビューサイト</title>
+        <title>映画レビューサイト</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -54,7 +54,7 @@
 <body>
     <div class="container">
         <div class="row">
-        <h1>レビューサイト</h1>
+        <h1>映画レビューサイト</h1>
         </div>
         
         <div class="row">

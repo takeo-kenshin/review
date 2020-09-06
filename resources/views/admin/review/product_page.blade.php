@@ -64,7 +64,6 @@
                         <thead>
                         <tr>
                             <th width='10%'>Comment_ID</th>
-                            
                             <th width='10%'>User_ID</th>
                             <th width='10%'>評価点</th>
                             <th width='60%'>Comment</th>
@@ -80,9 +79,30 @@
                             <td>{{ $comment->score }}</td>
                             <td>{{ $comment->body }}</td>
                             <td>
-                                <button type ="button" class="btn btn-warning">
-                                <a href="{{ route('comment.delete',[$product->id,$comment->id]) }}">削除</a>
+                                <button type ="button" class="btn btn-warning" data-toggle="modal" data-target="#modal1">
+                                削除
                                 </button>
+                                <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="label1">確認</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        削除しますか？
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">いいえ</button>
+                                        <button type="submit" class="btn btn-warning">
+                                            <a href="{{ route('comment.delete',[$product->id,$comment->id]) }}">はい</a>
+                                        </button>
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

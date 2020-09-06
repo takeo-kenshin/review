@@ -32,6 +32,7 @@
                                 @enderror
                             </div>
                         </div>
+                        
                         <div class="form-group row">
                             <label for="title" class="col-md-2 col-form-label text-md-right">作品名</label>
                             <div class="col-md-8">
@@ -51,13 +52,14 @@
                                 </div>
                         </div>
                         
-                        <div class="form-group row mb-0">
-                            <div class="col-md-4 offset-md-4">
-                            {{ csrf_field() }}
-                            <input type="submit" class="btn btn-primary" value="更新">
-                            <button type="submit" class="btn btn-warning"><a href="{{ url('/') }}">戻る</a></button>
+                        <div class="form-group row">
+                            <div class="col-md-8 offset-md-2">
+                                {{ csrf_field() }}
+                                <input type="submit" class="btn btn-warning mr-3" value="編集">
+                                <button type="submit" class="btn btn-warning"><a href="{{ route('index') }}">戻る</a></button>
                             </div>
                         </div>
+                        
                     </form>
                 </div>
             </div>

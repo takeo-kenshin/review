@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('product_id');
             $table->integer('user_id');
-            $table->integer('score');
+            $table->float('score',2,1);
             $table->string('body',1000);
             $table->timestamps();
         });

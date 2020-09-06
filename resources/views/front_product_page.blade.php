@@ -1,7 +1,11 @@
-@extends('layouts.admin')
+@extends('layouts.user')
 @section('title', '作品情報ページ')
 @section('content')
-
+<style>
+    .button {
+                margin-bottom: 20px;
+            }
+</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -44,7 +48,13 @@
                            <p>{{ $count }}</p>
                         </div>
                     </div>
-                        
+                    
+                    <div class='button'>
+                        <button type ="button" class="btn btn-warning mb-3">
+                            <a href="{{ url('/') }}">戻る</a>
+                        </button>
+                    </div>
+                    
                     <table class ="table table-bordered">
                         <thead>
                         <tr>
